@@ -227,7 +227,7 @@ class tpsa(object):
         if not isinstance(other, type(self._tps)):
             other = tpsa(0.0, dtype=self.dtype) + other
         result = tpsa(0.0, dtype=self.dtype)
-        result._tps = other - self._tps
+        result._tps = other._tps - self._tps
 
         return result
 
@@ -244,7 +244,7 @@ class tpsa(object):
             other = tpsa(0.0, dtype=self.dtype) + other
 
         result = tpsa(0.0, dtype=self.dtype)
-        result._tps = self._tps * other
+        result._tps = self._tps * other._tps
         return result
 
     def __div__(self, other):
@@ -260,7 +260,7 @@ class tpsa(object):
             other = tpsa(0.0, dtype=self.dtype) + other
 
         result = tpsa(0.0, dtype=self.dtype)
-        result._tps = other / self._tps
+        result._tps = other._tps / self._tps
         return result
 
     def __truediv__(self, other):
@@ -276,7 +276,7 @@ class tpsa(object):
             other = tpsa(0.0, dtype=self.dtype) + other
 
         result = tpsa(0.0, dtype=self.dtype)
-        result._tps = other / self._tps
+        result._tps = other._tps / self._tps
         return result
 
     def __neg__(self):
