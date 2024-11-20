@@ -224,8 +224,11 @@ class tpsa(object):
         return result
 
     def __rsub__(self, other):
+        if not isinstance(other, type(self._tps)):
+            other = tpsa(0.0, dtype=self.dtype) + other
         result = tpsa(0.0, dtype=self.dtype)
         result._tps = other - self._tps
+
         return result
 
     def __mul__(self, other):
@@ -237,6 +240,9 @@ class tpsa(object):
         return result
 
     def __rmul__(self, other):
+        if not isinstance(other, type(self._tps)):
+            other = tpsa(0.0, dtype=self.dtype) + other
+
         result = tpsa(0.0, dtype=self.dtype)
         result._tps = self._tps * other
         return result
@@ -250,6 +256,9 @@ class tpsa(object):
         return result
 
     def __rdiv__(self, other):
+        if not isinstance(other, type(self._tps)):
+            other = tpsa(0.0, dtype=self.dtype) + other
+
         result = tpsa(0.0, dtype=self.dtype)
         result._tps = other / self._tps
         return result
@@ -263,6 +272,9 @@ class tpsa(object):
         return result
 
     def __rtruediv__(self, other):
+        if not isinstance(other, type(self._tps)):
+            other = tpsa(0.0, dtype=self.dtype) + other
+
         result = tpsa(0.0, dtype=self.dtype)
         result._tps = other / self._tps
         return result
